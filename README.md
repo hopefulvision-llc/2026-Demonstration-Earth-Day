@@ -17,6 +17,23 @@
 
 ---
 
+## 🛠️ Technical Documentation
+
+**Complete technical setup guides are available:**
+
+- **[TECHNICAL_SUMMARY.md](TECHNICAL_SUMMARY.md)** - Executive summary of all technical requirements
+- **[TECHNICAL_INDEX.md](TECHNICAL_INDEX.md)** - Navigation hub for all technical documentation
+- **[TECHNICAL_SETUP.md](TECHNICAL_SETUP.md)** - Master technical guide with complete requirements
+- **[QUICK_REFERENCE_CHECKLIST.md](QUICK_REFERENCE_CHECKLIST.md)** - Day-of checklist (print this!)
+- **[HARDWARE_SHOPPING_LIST.md](HARDWARE_SHOPPING_LIST.md)** - Equipment guide and budget options
+- **[SOFTWARE_CONFIGURATION.md](SOFTWARE_CONFIGURATION.md)** - Step-by-step software setup
+- **[NETWORK_CONNECTIVITY.md](NETWORK_CONNECTIVITY.md)** - Internet and network requirements
+- **[TESTING_REHEARSAL.md](TESTING_REHEARSAL.md)** - Complete testing and rehearsal schedule
+
+**Quick Start:** Begin with [TECHNICAL_SUMMARY.md](TECHNICAL_SUMMARY.md) for overview, then follow [TECHNICAL_INDEX.md](TECHNICAL_INDEX.md) for detailed guidance.
+
+---
+
 ## 📋 Detailed 4-Hour Structure
 
 ### HOUR 1: Philosophy & Vision (12:00 PM - 1:00 PM PT)
