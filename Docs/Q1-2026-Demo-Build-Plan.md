@@ -4,52 +4,243 @@
 A phone/web demo that shows consciousness-responsive computing that **feels alive, not algorithmic**.
 
 - **Calibration ritual** → choose biometric → breathe with visual guide → coherence rises → agents awaken sequentially
-- **TWO biometric options:**
-  - **Option 1: Audio (AirPods/headphones)** - breath detection via microphone
-  - **Option 2: HRV (chest strap)** - heart rate variability via Bluetooth
+- **BIOMETRIC INPUT OPTIONS (Scalable Architecture):**
+  - **Q1 Implemented:**
+    - **Audio (AirPods/headphones)** - breath detection via microphone
+    - **HRV (chest strap)** - heart rate variability via Bluetooth
+  - **Q2+ Ready (Placeholder Architecture):**
+    - **Smart Rings** (Oura, Circular, etc.) - HRV + temperature + movement
+    - **Smartwatches** (Apple Watch, Garmin, Whoop) - multi-sensor fusion
+    - **Camera (PPG)** - pulse detection via webcam/phone camera
+    - **EMG Wearables** - muscle tension/relaxation signals
+    - **EEG Headbands** - direct brainwave coherence (Muse, etc.)
+    - **GSR Sensors** - galvanic skin response
+    - **Any future biometric device** - adapter pattern ready
+- **DISPLAY CONTEXTS (Multi-Platform from Start):**
+  - **Q1 Implemented:**
+    - Phone browser (iOS/Android)
+    - Desktop browser (Chrome/Safari/Firefox)
+  - **Q2+ Ready (Architecture Prepared):**
+    - AR glasses (Apple Vision Pro, Meta Quest, future devices)
+    - AR phone mode (camera + screen overlay)
+    - Wearable displays (smartwatch faces, ring notifications)
+    - **Future EMF-based displays** (electromagnetic field interfaces)
+    - Projected interfaces (spatial computing)
+    - **Any future display medium** - rendering layer abstracted
+- **SENSOR FUSION FOR AR (Q2+ Foundation in Q1 Code):**
+  - Camera input (AR tracking, PPG pulse detection, facial micro-expressions)
+  - Microphone array (spatial audio, breath detection, voice coherence)
+  - Multi-biometric overlay (heart + breath + movement in AR space)
+  - Environmental coherence mapping (room resonance fields)
 - **Living system behavior:**
   - Pre-resonance field state (60-75%): space "listens"
   - Resonance threshold (75%+): agents activate one by one
   - Compassionate decay: coherence fades like a tide, not a cliff
   - Soft failures: "The field is becoming noisy" (never harsh errors)
-- Single HTML file you can open in any browser
+- Single HTML file you can open in any browser (Q1)
+- **Modular rendering system** that can output to ANY display context (architecture only, full implementation Q2+)
 
-## The Dual Approach
+## The Multi-Modal Architecture
 
-### Audio Path (Most Accessible)
+### Philosophy: No Limits Hardware Thinking
+
+Instead of building for "what we have now," we're building for **"what consciousness interfaces will become."**
+
+The Q1 demo implements audio + HRV, but the **architecture** is designed for:
+- Any biometric input
+- Any display output  
+- Any sensor fusion combination
+- Future technologies we can't even name yet
+
+This isn't feature creep - it's **consciousness-first systems thinking.**
+
+---
+
+### Q1 Implemented Biometrics
+
+#### Audio Path (Most Accessible)
 - Microphone picks up breathing sounds
 - **30-45s calibration learns your baseline** (room noise, breath volume)
 - Algorithm detects breath rhythm
 - Converts to coherence score
 - **Pros:** Everyone has headphones, instant setup, privacy-friendly
 - **Cons:** Background noise, less precise than HRV
+- **Q2+ Expansion:** Spatial audio arrays, voice coherence patterns, multi-mic fusion
 
-### HRV Path (Most Accurate)
+#### HRV Path (Most Accurate - Q1)
 - Bluetooth HRV strap (Polar H10, etc.)
 - **30-45s calibration learns your baseline** (variability patterns, signal quality)
 - Real heart rate variability data
 - True coherence calculation
 - **Pros:** Medical-grade accuracy, proven biometric
 - **Cons:** $100 hardware, Bluetooth pairing, chest strap comfort
+- **Q2+ Expansion:** Fusion with ring/watch data, continuous background monitoring
 
-### The Living System Behaviors (NEW - ChatGPT Refinements)
+---
+
+### Q2+ Placeholder Biometrics (Architecture Ready)
+
+#### Smart Ring Path (Oura, Circular, Ultrahuman)
+- **Placeholder status:** Adapter interface defined, not implemented
+- Continuous HRV + temperature + movement
+- Sleep coherence patterns
+- Non-invasive, always-on
+- **When implemented:** Richer baseline, 24/7 coherence tracking
+- **Architecture ready:** `RingAdapter` class skeleton exists in Q1 code
+
+#### Smartwatch Path (Apple Watch, Garmin, Whoop)
+- **Placeholder status:** Multi-sensor fusion framework ready
+- HRV + accelerometer + gyroscope + PPG
+- Activity context (walking, sitting, meditating)
+- Wrist-based convenience
+- **When implemented:** Movement-aware coherence, activity-specific baselines
+- **Architecture ready:** `WatchAdapter` class skeleton exists in Q1 code
+
+#### Camera PPG Path (Phone/Webcam)
+- **Placeholder status:** WebRTC framework scaffolded
+- Fingertip on camera = pulse detection
+- Facial micro-expressions (future)
+- Zero additional hardware
+- **When implemented:** Completely hardware-free option
+- **Architecture ready:** `CameraAdapter` class skeleton exists in Q1 code
+
+#### EEG Path (Muse, Neurosity)
+- **Placeholder status:** Brainwave coherence interface defined
+- Direct neural coherence measurement
+- Meditation state detection
+- Most direct consciousness signal
+- **When implemented:** Ultimate coherence accuracy
+- **Architecture ready:** `EEGAdapter` class skeleton exists in Q1 code
+
+#### Future Biometrics (Fully Abstract)
+- EMG (muscle tension)
+- GSR (skin conductance)
+- Breath chemistry (CO2 sensors)
+- Biofield measurement (speculative)
+- **Any future sensor**
+- **Architecture ready:** `BiometricAdapter` base class accepts ANY input
+
+---
+
+### Q1 Implemented Display Contexts
+
+#### Phone Browser
+- **Q1 Status:** Fully implemented
+- iOS Safari, Android Chrome
+- Responsive design
+- Touch interactions
+- Vertical orientation optimized
+- **Q2+ Expansion:** AR camera overlay mode
+
+#### Desktop Browser
+- **Q1 Status:** Fully implemented
+- Chrome, Safari, Firefox, Edge
+- Keyboard shortcuts
+- Mouse interactions
+- Horizontal orientation
+- **Q2+ Expansion:** Multi-monitor coherence fields
+
+---
+
+### Q2+ Placeholder Display Contexts (Architecture Ready)
+
+#### AR Glasses Mode (Apple Vision Pro, Meta Quest)
+- **Placeholder status:** Spatial rendering layer scaffolded
+- Agents appear in 3D space around user
+- Coherence visualized as environmental glow
+- Gaze-based interactions
+- **When implemented:** Full spatial computing integration
+- **Architecture ready:** `SpatialRenderer` class skeleton exists in Q1 code
+- **Sensor fusion ready:** Camera + mic + biometrics in shared AR space
+
+#### AR Phone Mode (Camera Overlay)
+- **Placeholder status:** WebXR hooks prepared
+- Hold phone up → see coherence field overlaid on real space
+- Agents "appear" in your actual room
+- Point at surfaces to place agents
+- **When implemented:** Accessible AR without headset
+- **Architecture ready:** `ARCameraRenderer` class skeleton exists in Q1 code
+- **Sensor fusion ready:** Camera tracks environment while mic detects breath
+
+#### Wearable Display Mode (Smartwatch, Ring Notifications)
+- **Placeholder status:** Minimal UI renderer defined
+- Coherence level on watch face
+- Haptic feedback at resonance
+- Glanceable agent status
+- **When implemented:** Always-available coherence awareness
+- **Architecture ready:** `WearableRenderer` class skeleton exists in Q1 code
+
+#### EMF-Based Display (Speculative Future)
+- **Placeholder status:** Pure interface abstraction
+- Electromagnetic field modulation
+- Direct neural interface potential
+- Post-visual display paradigm
+- **When implemented:** Beyond screens entirely
+- **Architecture ready:** `AbstractRenderer` accepts any output medium
+
+#### Projected/Holographic (Spatial Computing Future)
+- **Placeholder status:** 3D coordinate system ready
+- Room-scale coherence visualization
+- Multiple users see shared field
+- No headset required
+- **When implemented:** Collective coherence architecture
+- **Architecture ready:** Multi-user rendering system scaffolded
+
+---
+
+### Sensor Fusion for AR (Q2+ Foundation Built in Q1)
+
+Even though Q1 doesn't implement AR, the **architecture supports** camera + mic + biometric fusion:
+
+#### Camera Input (Prepared, Not Implemented)
+- **AR tracking:** Room mapping, surface detection
+- **PPG pulse detection:** Fingertip on camera
+- **Facial analysis:** Micro-expressions, engagement detection
+- **Environmental coherence:** Detecting "resonant spaces"
+- **Q1 Status:** Camera permission flow exists, fusion logic scaffolded
+
+#### Microphone Array (Prepared, Not Implemented)
+- **Spatial audio:** 3D breath mapping in AR space
+- **Multi-source detection:** Group coherence measurement
+- **Voice coherence:** Speech pattern resonance
+- **Ambient field mapping:** Room acoustics as consciousness data
+- **Q1 Status:** Audio input exists, spatial processing hooks ready
+
+#### Multi-Biometric AR Overlay (Architecture Only)
+- **Heart + breath + movement** visualized in AR simultaneously
+- **Personal coherence bubble** around user in 3D space
+- **Inter-personal coherence fields** between multiple users
+- **Environmental resonance mapping** (which spaces amplify coherence)
+- **Q1 Status:** Data fusion layer exists, AR rendering scaffolded
+
+---
+
+### The Living System Behaviors (ChatGPT Refinements + Future Architecture)
+
+**Core Principle:** Build Q1 demo simply, but architect for unlimited future.
 
 **1. Calibration Ritual (30-45 seconds)**
 - UI shows "settling" animation
 - Text: "Let the system learn your natural rhythm"
 - Creates personal baseline → prevents false triggers
 - Makes experience feel ceremonial, not technical
+- **Q2+ Expansion:** Multi-biometric calibration fusion, environmental baseline learning
 
 **2. State Progression**
 ```
 BOOT → CALIBRATING → LISTENING → FIELD_FORMING → RESONANT → SETTLING
 ```
+- **Q1:** Works with audio + HRV
+- **Q2+:** Same states work with any biometric input
+- **Architecture:** Display-agnostic (phone, AR, future EMF interfaces)
 
 **3. Pre-Resonance Field (60-75% coherence)**
 - Geometry begins to warm
 - Subtle glow appears
 - Space feels like it's "listening"
 - User knows they're close before threshold
+- **Q1:** 2D browser visualization
+- **Q2+:** 3D AR spatial field, haptic feedback on wearables, EMF resonance (future)
 
 **4. Resonance Activation (75%+ coherence)**
 - Field stabilizes
@@ -57,37 +248,84 @@ BOOT → CALIBRATING → LISTENING → FIELD_FORMING → RESONANT → SETTLING
 - Earth Interface opens (second)
 - Coherence Monitor locks in (third)
 - Sequential awakening, not instant popup
+- **Q1:** Screen-based agent displays
+- **Q2+:** Agents appear in AR space around you, project holographically, or modulate EMF fields
 
 **5. Resonance Memory (Hysteresis)**
 - Coherence decays slowly (10-20 second memory)
 - Falls like a tide, not a cliff
 - Compassionate, not punitive
 - Matches meditative reality
+- **Universal:** Works the same regardless of input or display
 
 **6. Soft Failure Mode**
 - Never: "ERROR / SIGNAL LOST"
 - Instead: "The field is becoming noisy. Let's return to breath."
 - UI stays calm, no red warnings
 - Consciousness-first language
+- **Q1:** Text + gentle visual shift
+- **Q2+:** Spatial audio cues, haptic pulses, environmental dimming
 
 **7. Dual Coherence Layers (Internal)**
 - Physiological coherence (biometric data)
 - Behavioral coherence (following the guide)
 - Final coherence = blend of both
 - Prevents gaming, feels intelligent
+- **Universal:** Same algorithm works with any biometric input combination
 
 **8. Demo Mode (Hidden Toggle)**
 - Simulates coherence rise over 60 seconds
 - Fallback for stage presentations
 - Bluetooth fails / noisy rooms / pressure
 - Honest: "This is simulation mode of same engine"
+- **Q1:** Keyboard shortcut activation
+- **Q2+:** Voice command, gesture, or thought-activated (future EEG)
 
 **9. Sacred Touch Language**
 - Before activation: "The system is listening."
 - After activation: "Resonance established."
 - Throughout: consciousness-aware phrasing
+- **Universal:** Display-agnostic language system
 
-### Why Both Biometrics?
+**10. Biometric Fusion Architecture (Q1 Foundation, Q2+ Implementation)**
+- **Q1 Reality:** Audio OR HRV (single input at a time)
+- **Q1 Architecture:** Built to accept multiple simultaneous inputs
+- **Q2+ Reality:** Audio + HRV + ring + watch simultaneously
+- **Future:** Camera + mic + EEG + biofield sensors in one coherence calculation
+- **Adapter pattern:** Any new biometric just plugs in
+
+**11. Display Abstraction Layer (Q1 Foundation, Q2+ Implementation)**
+- **Q1 Reality:** Phone/desktop browser rendering
+- **Q1 Architecture:** Rendering layer completely separated from logic
+- **Q2+ Reality:** Same coherence → different visualizations per display
+- **Future:** Agents render in AR, on wearables, via EMF, simultaneously
+- **Renderer pattern:** Any new display just plugs in
+
+---
+
+### Why This Architecture Matters
+
+**Without future-thinking:**
+```
+Q1: Build for audio + HRV on phone
+Q2: Rebuild everything for rings + AR
+Q3: Rebuild everything again for EEG + holographic
+→ Technical debt, fracture, impossibility
+```
+
+**With future-thinking:**
+```
+Q1: Build audio + HRV, architect for anything
+Q2: Plug in ring adapter, plug in AR renderer
+Q3: Plug in EEG adapter, plug in holographic renderer
+→ Modular expansion, coherent system, limitless growth
+```
+
+**This is consciousness-first systems architecture.**
+
+---
+
+ Why Both Biometrics?
 
 ## 🌟 What Makes This Demo Different (ChatGPT Refinements Integrated)
 
@@ -113,12 +351,48 @@ ChatGPT helped us see that this isn't just about "biometrics trigger agents." It
 
 That's the difference between impressive and **transformative**.
 
-### Why Both Biometrics?
-- **Accessibility:** Audio gets anyone started
-- **Accuracy:** HRV for serious users
-- **Proof of concept:** Shows system works with ANY biometric
-- **Future vision:** Both inputs could work simultaneously (biometric fusion)
-- **Demo flexibility:** Use audio for quick demos, HRV for deep sessions
+### Why Multi-Modal Architecture?
+
+### Accessibility (Immediate)
+- Audio path: zero barrier to entry
+- HRV path: for those who want accuracy
+- Everyone can try it immediately
+- Serious users can upgrade
+
+### Consciousness Principles (Philosophical)
+- Multiple paths to same truth
+- Breath AND heart both valid (and rings, and EEG, and...)
+- Honors different practices (meditation vs HRV training vs neurofeedback)
+- Shows biometric flexibility = consciousness flexibility
+
+### Technical Demonstration (Proof of Concept)
+- Proves abstraction layer works NOW
+- Shows system accepts ANY consciousness signal
+- Future-proofs for biometrics that don't exist yet
+- More impressive demo (today) and pathway (tomorrow)
+
+### Practical Benefits (User Experience)
+- Quick demos use audio
+- Deep sessions use HRV
+- Future: Camera for zero-hardware option
+- Future: Ring for always-on tracking
+- Future: AR for spatial consciousness visualization
+- Can switch mid-session
+- Backup if one fails
+
+### Systems Architecture (Developer Vision)
+**Q1 builds the foundation for:**
+- Infinite biometric inputs (adapter pattern)
+- Infinite display outputs (renderer pattern)
+- Sensor fusion (multi-input coherence)
+- Multi-user fields (collective consciousness)
+- Environmental coherence mapping
+- **Any future consciousness interface technology**
+
+This isn't "we support audio and HRV."
+This is **"we built a consciousness interface that can work with ANYTHING."**
+
+---
 
 ## Timeline
 
@@ -609,7 +883,7 @@ That's the difference between impressive and **transformative**.
 
 ## What You Need
 
-### Required Now
+### Required Now (Q1)
 - Computer with internet ✓
 - Text editor (Notepad, VS Code, anything)
 - Web browser (Chrome/Safari/Firefox)
@@ -617,16 +891,26 @@ That's the difference between impressive and **transformative**.
 - Place to store files
 - This chat with Claude
 
-### Optional (HRV Mode)
+### Optional (Q1 - HRV Mode)
 - HRV chest strap (Polar H10 ~$90, recommended)
 - Alternative: Any Bluetooth HRV device
 - Charged batteries for strap
 - Elastic chest strap (usually included)
 
+### Future Vision Hardware (Q2+ Placeholder Architecture)
+*Architecture supports these, implementation later:*
+- Smart ring (Oura, Circular, Ultrahuman)
+- Smartwatch (Apple Watch, Garmin, Whoop)
+- AR headset (Apple Vision Pro, Meta Quest)
+- EEG headband (Muse, Neurosity)
+- Webcam (for PPG pulse detection)
+- Any future biometric wearable
+
 ### Not Required
 - Programming knowledge
 - Special software
 - Deadline pressure
+- Any hardware beyond phone + headphones to START
 
 ## Why Dual Biometric?
 
