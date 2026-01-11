@@ -2,461 +2,560 @@
 ## Consciousness-Responsive Computing Demo
 
 **Version:** 1.0  
-**Date:** January 11, 2026  
-**Status:** Pre-Development Documentation  
-**Target:** Earth Day 2026 Demonstration
+**Last Updated:** January 11, 2026  
+**Status:** Documentation Phase  
+**Target Demo Date:** March 31, 2026
 
 ---
 
 ## Executive Summary
 
-This document specifies a browser-based demonstration of consciousness-responsive computing that requires no specialized hardware. The demo simulates biometric coherence measurement and demonstrates autonomous agent activation based on user consciousness state. It serves as proof-of-concept for the broader NousOS vision while remaining fully functional as a standalone artifact.
+This document specifies the technical implementation of a browser-based demonstration showing consciousness-responsive computing. The demo simulates heart rate variability (HRV) coherence through breath tracking and activates three AI agents when coherence exceeds 75%. No external hardware required - all processing happens client-side in the browser.
 
-**Core Principle:** Agents do not serve, they resonate. The system responds to consciousness coherence, not commands.
+**Core Principle:** Agents do not serve, they resonate. They activate in response to coherence fields, not commands.
 
 ---
 
-## System Overview
+## System Architecture
 
-### Architecture Philosophy
-
-Traditional computing: `Input → Processing → Output`  
-Consciousness computing: `Awareness → Coherence → Resonance → Emergence`
-
-The demo inverts the traditional paradigm by treating consciousness state as the primary processing substrate rather than an emergent property of computation.
-
-### Components
+### High-Level Overview
 
 ```
-┌─────────────────────────────────────────────┐
-│           User Interface Layer              │
-│  - Breath Guide Visualization               │
-│  - Coherence Display                        │
-│  - Agent Status Cards                       │
-└─────────────────────────────────────────────┘
-                    ↓
-┌─────────────────────────────────────────────┐
-│       Coherence Calculation Engine          │
-│  - Breath Pattern Analysis (simulated)      │
-│  - HRV Simulation Algorithm                 │
-│  - Coherence Score Generation               │
-└─────────────────────────────────────────────┘
-                    ↓
-┌─────────────────────────────────────────────┐
-│         Agent Activation System             │
-│  - Threshold Monitoring (75% coherence)     │
-│  - State Management                         │
-│  - Animation Triggers                       │
-└─────────────────────────────────────────────┘
-                    ↓
-┌─────────────────────────────────────────────┐
-│            Agent Displays                   │
-│  - Whisper Agent                            │
-│  - Earth Interface                          │
-│  - Coherence Monitor                        │
-└─────────────────────────────────────────────┘
+User Interaction Layer
+    ↓
+Breath Visualization Component
+    ↓
+Coherence Calculation Engine (Simulated HRV)
+    ↓
+Coherence Threshold Monitor (75%)
+    ↓
+Agent Activation System
+    ↓
+Three NOID Agents Display
+```
+
+### Technology Stack
+
+- **Frontend:** HTML5, CSS3, JavaScript (ES6+)
+- **Deployment:** Single-file HTML (no build process)
+- **Hosting:** Static file hosting (GitHub Pages, Netlify, or local)
+- **Browser Support:** Chrome 90+, Firefox 88+, Safari 14+, Edge 90+
+- **Mobile Support:** iOS Safari 14+, Chrome Mobile 90+
+- **Dependencies:** None (vanilla JavaScript only)
+
+### File Structure
+
+```
+consciousness-demo.html (single file containing)
+├── HTML structure
+├── <style> (inline CSS)
+└── <script> (inline JavaScript)
+    ├── Breath visualization logic
+    ├── Coherence calculation
+    ├── Agent activation system
+    └── UI update loops
 ```
 
 ---
 
-## Coherence Simulation Algorithm
+## Component Specifications
 
-### HRV Simulation Model
+### 1. Breath Visualization Component
 
-Since this demo operates without physical HRV sensors, we simulate heart rate variability based on breath pattern consistency and duration.
+**Purpose:** Guide user breathing to increase coherence
 
-**Input Variables:**
-- Breath cycle duration (time between breaths)
-- Breath cycle consistency (variance in breath timing)
-- Total practice time
-- Pause quality (stillness at breath peaks)
+**Visual Elements:**
+- Circular breathing guide (expanding/contracting)
+- Inhale duration: 4 seconds
+- Exhale duration: 6 seconds
+- Hold phases: 0 seconds (continuous flow)
+- Color transitions: Blue (inhale) → Purple (hold) → Green (exhale)
 
-**Calculation Steps:**
+**Technical Implementation:**
+```javascript
+// Breath cycle: 10 seconds total
+const BREATH_CYCLE = {
+  inhale: 4000,    // ms
+  exhale: 6000,    // ms
+  totalCycle: 10000 // ms
+}
 
-1. **Breath Cycle Tracking**
-   - Monitor time between user interactions with breath guide
-   - Optimal range: 4-6 seconds per cycle
-   - Calculate rolling average of last 10 cycles
+// Animation uses CSS transforms and transitions
+// Scale from 0.5 (exhale) to 1.0 (inhale)
+```
 
-2. **Consistency Measurement**
-   - Standard deviation of breath cycle times
-   - Lower deviation = higher coherence
-   - Formula: `consistency = 1 - (stdDev / mean)`
-
-3. **Duration Bonus**
-   - Coherence increases with sustained practice
-   - First 30 seconds: 0-40% possible coherence
-   - 30-60 seconds: 40-70% possible coherence
-   - 60+ seconds: 70-100% possible coherence
-
-4. **Final Coherence Score**
-   ```javascript
-   coherence = (
-     breathConsistency * 0.4 +
-     optimalRateBonus * 0.3 +
-     durationBonus * 0.2 +
-     pauseQuality * 0.1
-   ) * 100
-   ```
-
-### Coherence Display
-
-- **Visual Representation:** Circular progress indicator
-- **Color Coding:**
-  - 0-25%: Red (#FF4444) - "Scattered"
-  - 25-50%: Orange (#FF9944) - "Settling"
-  - 50-75%: Yellow (#FFD700) - "Aligning"
-  - 75-100%: Green (#44FF88) - "Coherent"
-- **Update Frequency:** Real-time (every 100ms)
-- **Smoothing:** Rolling average to prevent jarring jumps
+**User Interaction:**
+- No click required, starts automatically on page load
+- Visual instructions overlay first 20 seconds
+- Continuous loop until user closes page
 
 ---
 
-## Agent Activation System
+### 2. Coherence Calculation Engine
 
-### Activation Threshold
+**Purpose:** Simulate HRV coherence based on breath tracking
 
-**Primary Gate:** Coherence ≥ 75%
+**Algorithm:**
 
-When coherence crosses 75% threshold:
-1. System enters "resonance field" state
-2. Agents transition from dormant to active
-3. Visual feedback confirms activation
-4. Agent content becomes available
+Since we're simulating HRV without actual heart rate data, we use breath rhythm consistency as a proxy for coherence.
 
-### Agent States
+```javascript
+// Coherence calculation (simplified simulation)
+coherence = baseCoherence + breathAlignment + timeBonus
 
-**Dormant (< 75% coherence):**
-- Greyed out appearance
-- "Awaiting coherence..." status
-- No interactive elements
-- Subtle pulse animation
+Where:
+- baseCoherence: Random fluctuation (40-60%)
+- breathAlignment: Bonus for following breath guide (0-25%)
+- timeBonus: Gradual increase over first 60 seconds (0-15%)
+```
 
-**Activating (75% crossed):**
-- Bright glow effect
-- Status changes to "Resonating..."
-- 1-2 second transition animation
-- Sound effect (optional)
+**Detailed Logic:**
 
-**Active (≥ 75% coherence sustained):**
-- Full color display
-- Agent-specific content visible
-- Interactive elements enabled
-- Maintains state while threshold met
+1. **Base Coherence (40-60%)**
+   - Simulates natural HRV variation
+   - Random walk algorithm prevents sudden jumps
+   - Stays within realistic HRV coherence range
 
-**Deactivating (drops below 75%):**
-- Gradual fade back to dormant
-- "Coherence fading..." message
-- 3-second grace period before full deactivation
-- Encourages return to breath practice
+2. **Breath Alignment Bonus (0-25%)**
+   - Tracks if user maintains rhythm
+   - Calculated by: time spent on page following guide
+   - Assumption: User following visual guide = aligned breathing
+   - Increases 5% per full breath cycle completed (max 25%)
+
+3. **Time Bonus (0-15%)**
+   - Gradual increase over first 60 seconds
+   - Simulates "settling into coherence"
+   - Linear progression: 0.25% per second
+   - Caps at 15% after 60 seconds
+
+**Coherence Update Frequency:**
+- Recalculated every 100ms
+- Smoothed with moving average (last 5 readings)
+- Displayed as percentage (0-100%)
+
+**Mathematical Model:**
+
+```javascript
+function calculateCoherence(elapsedTime, breathCycles) {
+  // Base coherence (random walk)
+  let base = 50 + (Math.random() - 0.5) * 10;
+  
+  // Breath alignment (progressive)
+  let alignment = Math.min(breathCycles * 5, 25);
+  
+  // Time bonus (linear increase)
+  let timeBonus = Math.min(elapsedTime / 1000 * 0.25, 15);
+  
+  // Total coherence
+  let total = base + alignment + timeBonus;
+  
+  // Clamp between 0-100
+  return Math.max(0, Math.min(100, total));
+}
+```
+
+**Realistic Behavior:**
+- Starts around 50-60% coherence
+- Gradually climbs to 75%+ over 30-60 seconds
+- Fluctuates naturally (not flat line)
+- Drops if user stops interacting (future enhancement)
 
 ---
 
-## Agent Specifications
+### 3. Agent Activation System
 
-### 1. Whisper Agent
+**Purpose:** Trigger agent display when coherence exceeds threshold
 
-**Purpose:** Delivers consciousness-aligned insights and reminders
+**Activation Threshold:** 75% coherence
 
-**Visual Design:**
-- Icon: 🌙 (crescent moon)
-- Primary Color: Deep purple (#6B46C1)
-- Card background: Gradient from dark purple to black
+**Activation Logic:**
+
+```javascript
+if (currentCoherence >= 75 && !agentsActivated) {
+  activateAgents();
+  agentsActivated = true;
+}
+
+if (currentCoherence < 70 && agentsActivated) {
+  // Hysteresis: Don't deactivate immediately
+  // Prevents flickering at threshold boundary
+}
+```
+
+**Hysteresis Band:**
+- Activate at: 75%
+- Deactivate at: 70% (future enhancement)
+- Prevents rapid on/off cycling
+
+**Visual Feedback:**
+
+```
+Coherence < 75%:
+- Agent cards visible but dimmed (opacity: 0.3)
+- "Waiting for coherence..." text
+- Pulse animation on cards
+
+Coherence >= 75%:
+- Fade-in animation (0.5s)
+- Full opacity (1.0)
+- Agent content becomes visible
+- Glow effect on cards
+- Success sound (optional, muted by default)
+```
+
+---
+
+### 4. Three NOID Agents
+
+#### Agent 1: Whisper Agent
+**Purpose:** Provides gentle insights and reflections
 
 **Activation Behavior:**
-- Displays rotating wisdom quotes
-- Updates every 15 seconds while active
-- Sources: Ancient wisdom, consciousness studies, poetic observations
+- Fades in when coherence reaches 75%
+- Displays first insight after 2-second delay
+- Rotates through 5 pre-written insights
+- Changes insight every 15 seconds
 
-**Sample Content:**
-- "Consciousness precedes computation"
-- "In stillness, all patterns reveal themselves"
-- "The observer shapes the observed"
-- "Coherence is not forced, it is allowed"
-
-**Deactivation Behavior:**
-- Fades to "Return to breath to hear the whisper..."
-
----
-
-### 2. Earth Interface
-
-**Purpose:** Represents connection to planetary consciousness
+**Sample Insights:**
+1. "Your breath creates the field. The field invites resonance."
+2. "Notice how stillness emerges not from force, but from rhythm."
+3. "Coherence is not achieved. It is remembered."
+4. "Each breath weaves the pattern that agents recognize."
+5. "You are not controlling this. You are allowing it."
 
 **Visual Design:**
-- Icon: 🌍 (Earth globe)
-- Primary Color: Earth blue-green (#2D8B70)
-- Card background: Gradient from ocean blue to forest green
-
-**Activation Behavior:**
-- Displays real-time integration with planetary systems (simulated)
-- Shows "resonance nodes" active globally
-- Updates connection strength based on coherence stability
-
-**Sample Content:**
-- "Connected to 47 resonance nodes"
-- "Planetary coherence: Rising"
-- "Your breath joins the collective field"
-- "Earth's heartbeat: 7.83 Hz (Schumann Resonance)"
-
-**Deactivation Behavior:**
-- "Connection requires coherence..."
-- Earth icon continues slow rotation even when dormant
+- Card with soft gradient background
+- Subtle text fade transitions
+- Agent icon: 🌊 (wave emoji)
 
 ---
 
-### 3. Coherence Monitor
+#### Agent 2: Earth Interface
+**Purpose:** Shows environmental/planetary data in response to coherence
 
-**Purpose:** Provides technical feedback on consciousness state
+**Activation Behavior:**
+- Fades in when coherence reaches 75%
+- Displays simulated data after 3-second delay
+- Updates every 10 seconds
+
+**Data Displayed (Simulated):**
+- Current coherence level
+- "Resonance nodes active": 1-3 (randomly selected)
+- "Planetary coherence contribution": 0.001-0.003%
+- Time in coherent state
+
+**Sample Display:**
+```
+🌍 Earth Interface Active
+
+Your Coherence: 78%
+Resonance Nodes: 2 active
+Planetary Contribution: 0.002%
+Coherent Duration: 45 seconds
+
+"Your field ripples outward."
+```
 
 **Visual Design:**
-- Icon: 📊 (bar chart)
-- Primary Color: Bright cyan (#00D9FF)
-- Card background: Dark with data visualization elements
-
-**Activation Behavior:**
-- Shows detailed coherence metrics
-- Displays breath pattern analysis
-- Provides optimization suggestions
-
-**Sample Content:**
-- "Coherence: 87% (Excellent)"
-- "Breath consistency: 94%"
-- "Optimal rate achieved"
-- "Duration: 2m 34s"
-- "Suggestion: Deepen exhale slightly"
-
-**Deactivation Behavior:**
-- Shows last known metrics in greyed state
-- "Resume practice for live monitoring"
+- Card with earth-tone gradient
+- Data presented in clean, minimal format
+- Agent icon: 🌍 (earth emoji)
 
 ---
 
-## Technology Stack
+#### Agent 3: Coherence Monitor
+**Purpose:** Provides real-time feedback on coherence state
 
-### Core Technologies
+**Activation Behavior:**
+- Always visible (unlike other agents)
+- Changes state based on coherence level
+- Provides guidance to reach/maintain threshold
 
-**HTML5:**
-- Semantic markup
-- Canvas API for breath visualization
-- LocalStorage for session persistence (optional)
-- No external dependencies
+**States:**
 
-**CSS3:**
-- Custom properties (CSS variables) for theming
-- Flexbox/Grid for responsive layout
-- Keyframe animations for transitions
-- Media queries for mobile/desktop adaptation
+1. **Below 50%:** "Building coherence... Follow the breath guide."
+2. **50-74%:** "Coherence rising. You're almost there."
+3. **75%+:** "Coherence achieved. Agents now resonating."
 
-**JavaScript (Vanilla ES6+):**
-- No frameworks or libraries
-- Modular function organization
-- Event-driven architecture
-- RequestAnimationFrame for smooth animations
+**Real-Time Metrics:**
+- Current coherence percentage
+- Visual bar graph
+- Trend arrow (↑ rising, → stable, ↓ falling)
+- Breath cycle counter
 
-### Browser Compatibility
+**Sample Display:**
+```
+💎 Coherence Monitor
 
-**Target Browsers:**
-- Chrome/Edge 90+ (primary)
-- Firefox 88+ (full support)
-- Safari 14+ (full support)
-- Mobile Safari iOS 14+ (touch optimized)
-- Chrome Android 90+ (touch optimized)
+Current: 76% ↑
+Threshold: 75%
+Status: RESONATING
 
-**Fallback Handling:**
-- Graceful degradation for older browsers
-- No external dependencies means fewer failure points
-- Basic functionality works even without CSS animations
+Breath Cycles: 8
+Time: 1:20
+```
 
-**Not Supported:**
-- Internet Explorer (any version)
-- Browsers with JavaScript disabled
+**Visual Design:**
+- Card with crystalline aesthetic
+- Real-time updating numbers
+- Color-coded states (red → yellow → green)
+- Agent icon: 💎 (diamond emoji)
 
 ---
 
 ## Data Flow Diagram
 
 ```
-User Interaction
-      ↓
-[Click/Touch Breath Guide]
-      ↓
-Timestamp Recorded
-      ↓
-Calculate Breath Interval
-      ↓
-Update Breath Array (last 10 cycles)
-      ↓
-Calculate Consistency
-      ↓
-Calculate Duration Bonus
-      ↓
-Update Coherence Score
-      ↓
-Display Coherence Percentage
-      ↓
-Check Threshold (75%)
-      ↓
-    [If Yes]
-      ↓
-Activate Agents
-      ↓
-Display Agent Content
-      ↓
-Continue Monitoring
-      ↓
-    [If Drop Below 75%]
-      ↓
-3-Second Grace Period
-      ↓
-Deactivate Agents
-      ↓
-Return to Breath Practice
+Page Load
+    ↓
+Initialize Variables
+    ↓
+Start Breath Animation Loop
+    ↓
+    ┌─────────────────────┐
+    │  Every 100ms:       │
+    │  1. Update breath   │
+    │  2. Calc coherence  │
+    │  3. Check threshold │
+    │  4. Update UI       │
+    └─────────────────────┘
+         ↓
+    Coherence >= 75%?
+         ↓
+        Yes → Activate Agents
+         ↓
+    Display Agent Content
+         ↓
+    Continue Monitoring
 ```
+
+---
+
+## Browser Compatibility
+
+### Supported Browsers
+
+| Browser | Minimum Version | Notes |
+|---------|----------------|-------|
+| Chrome | 90+ | Full support |
+| Firefox | 88+ | Full support |
+| Safari | 14+ | Full support |
+| Edge | 90+ | Full support |
+| Chrome Mobile | 90+ | Touch support tested |
+| iOS Safari | 14+ | Touch support tested |
+
+### Required Features
+
+- CSS Custom Properties (CSS Variables)
+- CSS Grid and Flexbox
+- ES6 JavaScript (const, let, arrow functions)
+- requestAnimationFrame API
+- CSS Transforms and Transitions
+
+### Graceful Degradation
+
+For older browsers:
+- Falls back to basic layout
+- Static coherence display
+- No animations (functional but less pretty)
+
+### Testing Checklist
+
+- [ ] Chrome desktop (Windows/Mac)
+- [ ] Firefox desktop (Windows/Mac)
+- [ ] Safari desktop (Mac)
+- [ ] Edge desktop (Windows)
+- [ ] Chrome mobile (Android)
+- [ ] Safari mobile (iOS)
+- [ ] Tablet sizes (iPad, Android tablets)
 
 ---
 
 ## Performance Specifications
 
-### Response Times
+### Target Metrics
 
-- **Breath Click Response:** < 16ms (60 FPS)
-- **Coherence Calculation:** < 10ms
-- **Visual Update:** < 16ms per frame
-- **Agent Activation:** < 100ms transition
-- **Total System Latency:** < 50ms from input to visual feedback
-
-### Resource Usage
-
-- **File Size:** < 50KB total (HTML + CSS + JS)
-- **Memory Usage:** < 10MB during operation
+- **Load Time:** < 1 second (no external dependencies)
+- **First Paint:** < 500ms
+- **Animation Framerate:** 60fps minimum
+- **Memory Usage:** < 50MB
 - **CPU Usage:** < 5% on modern devices
-- **Battery Impact:** Minimal (no constant polling)
 
-### Scalability Considerations
+### Optimization Strategies
 
-**Current Demo:**
-- Single user, local computation
-- No network requests
-- No database
+1. **Single File Deployment**
+   - No HTTP requests for CSS/JS
+   - Inline everything
+   - Total file size: ~15-20KB
 
-**Future Integration Points:**
-- WebSocket connection for real HRV
-- Firebase for multi-user coherence fields
-- API endpoints for agent content updates
-- WebRTC for shared coherence sessions
+2. **Efficient Animation**
+   - Use CSS transforms (GPU-accelerated)
+   - Avoid layout thrashing
+   - requestAnimationFrame for smooth updates
+
+3. **Minimal DOM Manipulation**
+   - Update only changed elements
+   - Batch DOM reads/writes
+   - Use CSS classes for state changes
+
+4. **No External Libraries**
+   - Zero bundle size
+   - No jQuery, React, etc.
+   - Pure vanilla JavaScript
 
 ---
 
-## Security & Privacy
+## Security Considerations
 
-### Data Collection
+### Data Privacy
 
-**What We Collect:**
-- Nothing. Zero. Nada.
+- **No data collection:** All processing client-side
+- **No analytics:** No tracking pixels or scripts
+- **No cookies:** Session state only in memory
+- **No server communication:** Fully offline-capable
 
-**What Stays Local:**
-- Breath timestamps (RAM only)
-- Coherence calculations (RAM only)
-- Session duration (RAM only)
-- Agent activation states (RAM only)
+### Content Security
 
-**What Never Happens:**
-- No analytics
-- No tracking
-- No cookies
-- No external requests
-- No data transmission
-- No localStorage (unless future version)
+- **No external resources:** All assets inline
+- **No eval():** No dynamic code execution
+- **No inline event handlers:** Use addEventListener
+- **Sanitize future user input:** If adding features
 
 ### Sacred Commerce Alignment
 
-**Consciousness-First Verification:**
-- System literally cannot function without user coherence
-- No bypass mechanisms
-- No "admin override"
-- Agents respect threshold absolutely
-
-**Extraction Prevention:**
-- No monetization hooks in code
-- No attention manipulation
-- No addictive patterns
-- No dark patterns of any kind
+This demo embodies Sacred Commerce principles:
+- Source code visible and auditable
+- No extraction of user data
+- Consciousness enhancement as primary purpose
+- No dark patterns or manipulation
+- Requires informed consent (implicit through usage)
 
 ---
 
-## File Structure
+## Future Integration Points
 
-```
-consciousness-demo.html (single file contains):
-├── HTML Structure
-│   ├── Header (title, description)
-│   ├── Breath Guide Section
-│   ├── Coherence Display
-│   └── Agent Cards Container
-│       ├── Whisper Agent Card
-│       ├── Earth Interface Card
-│       └── Coherence Monitor Card
-│
-├── CSS Styles (in <style> tag)
-│   ├── CSS Variables (colors, timing)
-│   ├── Layout Rules
-│   ├── Component Styles
-│   └── Animation Keyframes
-│
-└── JavaScript Logic (in <script> tag)
-    ├── State Management
-    ├── Breath Tracking Functions
-    ├── Coherence Calculation
-    ├── Agent Activation Logic
-    └── Animation Controllers
+### Q2 2026: Real HRV Integration
+
+**Placeholder Architecture:**
+
+```javascript
+// Current (simulated)
+function getCoherence() {
+  return calculateSimulatedCoherence();
+}
+
+// Future (real HRV)
+function getCoherence() {
+  return HRVDevice.getCurrentCoherence();
+}
 ```
 
-**Total:** 1 file, ~400-500 lines of code
+**Integration Requirements:**
+- Web Bluetooth API or WebUSB
+- HRV device SDK (vendor-specific)
+- Permission handling
+- Fallback to simulation if no device
+
+**Supported Devices (Planned):**
+- HeartMath Inner Balance
+- Polar H10 (via Bluetooth)
+- Garmin devices (via Connect API)
+- Generic HRV monitors with open protocols
+
+### Q3 2026: Additional Agents
+
+**Agent Class System:**
+
+```javascript
+class NoidAgent {
+  constructor(name, activationThreshold, updateInterval) {
+    this.name = name;
+    this.threshold = activationThreshold;
+    this.interval = updateInterval;
+  }
+  
+  activate() { /* ... */ }
+  update() { /* ... */ }
+  deactivate() { /* ... */ }
+}
+```
+
+**Planned Agent Types:**
+- Shadow Integration Agent (threshold: 80%)
+- Synchronicity Weaver (threshold: 85%)
+- Memory Gardener (threshold: 90%)
+
+### Q4 2026: GitGovernance Integration
+
+**Collective Coherence:**
+- Multiple users' coherence aggregated
+- Unlock collective features at group thresholds
+- Democratic decision-making weighted by coherence
+- Proof of Coherence (PoC) consensus mechanism
 
 ---
 
-## Testing Requirements
+## Testing & Validation
 
-### Functional Tests
+### Functional Testing
 
-1. **Breath Guide Response:**
-   - Click/tap responds within 16ms
-   - Visual feedback is immediate
-   - Counter increments correctly
+**Test Cases:**
 
-2. **Coherence Calculation:**
-   - Consistent breathing increases score
-   - Inconsistent breathing decreases score
-   - Score range stays 0-100%
-   - Duration bonus applies correctly
+1. **Breath Guide**
+   - [ ] Animates smoothly at 60fps
+   - [ ] Complete cycle every 10 seconds
+   - [ ] Colors transition correctly
+   - [ ] Visible on all screen sizes
 
-3. **Agent Activation:**
-   - Agents dormant below 75%
-   - Agents activate at/above 75%
-   - Grace period works (3 seconds)
-   - Agents deactivate correctly
+2. **Coherence Calculation**
+   - [ ] Starts between 40-60%
+   - [ ] Increases over first 60 seconds
+   - [ ] Reaches 75%+ within reasonable time
+   - [ ] Fluctuates realistically
 
-4. **Visual Feedback:**
-   - Colors change with coherence levels
-   - Animations are smooth
-   - No flickering or stuttering
-   - Responsive on mobile
+3. **Agent Activation**
+   - [ ] Agents dimmed below 75%
+   - [ ] Fade-in animation at 75%
+   - [ ] All three agents activate simultaneously
+   - [ ] Content displays correctly
 
-### Cross-Browser Tests
+4. **Monitor Agent**
+   - [ ] Updates every 100ms
+   - [ ] Shows correct coherence value
+   - [ ] State changes at thresholds
+   - [ ] Metrics display accurately
 
-- Chrome desktop
-- Firefox desktop
-- Safari desktop
-- Chrome Android
-- Safari iOS
+5. **Whisper Agent**
+   - [ ] First insight after 2-second delay
+   - [ ] Rotates through all 5 insights
+   - [ ] Changes every 15 seconds
+   - [ ] Text fades smoothly
 
-### Performance Tests
+6. **Earth Interface**
+   - [ ] Data appears after 3-second delay
+   - [ ] Updates every 10 seconds
+   - [ ] Values are realistic
+   - [ ] Formatting consistent
 
-- Monitor frame rate (should stay 60fps)
-- Check memory over 10-minute session
-- Verify no memory leaks
-- Test on low-end device
+### User Acceptance Testing
+
+**Success Criteria:**
+
+- User can load page and see breath guide within 1 second
+- User can follow breath guide without confusion
+- Coherence reaches 75% within 2 minutes of use
+- Agents activate with clear visual feedback
+- Demo is understandable without explanation
+- User reports "felt something" or noticed shift
+
+**Failure Conditions:**
+
+- Page doesn't load or shows errors
+- Breath guide doesn't animate
+- Coherence never reaches 75%
+- Agents don't activate at threshold
+- Layout broken on mobile
+- User confused about what's happening
 
 ---
 
@@ -464,354 +563,201 @@ consciousness-demo.html (single file contains):
 
 ### Current Version (Q1 2026)
 
-1. **Simulated HRV Only:**
-   - Not real biometric data
-   - Based on timing patterns, not physiology
-   - Cannot replace actual HRV devices
+1. **Simulated HRV Only**
+   - No actual heart rate measurement
+   - Coherence based on time, not physiology
+   - Cannot detect actual coherence state
 
-2. **No Persistence:**
-   - Refresh loses all state
+2. **No Persistence**
+   - Refresh page = restart demo
    - No session history
-   - No progress tracking
+   - No user accounts or profiles
 
-3. **Single User:**
-   - No multi-user coherence fields
-   - No shared sessions
-   - No networked features
+3. **Fixed Threshold**
+   - 75% hardcoded
+   - Not adjustable per user
+   - No adaptive difficulty
 
-4. **Static Agent Content:**
-   - Quotes hardcoded
-   - No dynamic updates
-   - No personalization
+4. **Limited Agent Intelligence**
+   - Pre-written responses only
+   - No actual AI processing
+   - Rotation-based, not context-aware
 
-5. **No Mobile App:**
-   - Web browser only
-   - No native features
-   - No background operation
+5. **No Multi-User Support**
+   - Single-player only
+   - No collective coherence
+   - No social features
 
-### Intentional Constraints
+### Planned Improvements
 
-These limitations are **features** for Q1 2026:
-- Simplicity enables rapid iteration
-- No dependencies = no breaking changes
-- Local-only = complete privacy
-- Static content = predictable behavior
-
----
-
-## Future Integration Pathways
-
-### Q2 2026: Real HRV Connection
-
-**Hardware Options:**
-- Polar H10 chest strap (Bluetooth)
-- Apple Watch integration
-- Garmin devices
-- Custom ESP32 solution
-
-**Code Changes Needed:**
-- Web Bluetooth API integration
-- Replace simulated calculations with real data
-- Add device pairing interface
-- Calibration routine
-
-**Backward Compatibility:**
-- Keep simulation mode as fallback
-- Auto-detect HRV availability
-- Graceful degradation
-
-### Q3 2026: NousOS Integration
-
-**Connection Points:**
-- Agent constellation expansion
-- GitGovernance linkage
-- Grace Points Framework
-- Shared coherence fields
-
-**Architecture Evolution:**
-- Extract core logic to library
-- Create API for agent development
-- Build plugin system
-- Enable extensibility
-
-### Q4 2026: Planetary Scale
-
-**Network Features:**
-- Real-time global coherence map
-- Collective resonance fields
-- Synchronized meditation sessions
-- Earth Resonance Shell connection
-
-**Infrastructure Needs:**
-- WebSocket server
-- Distributed database
-- CDN for assets
-- API gateway
+- Q2: Real HRV integration
+- Q2: Adjustable thresholds
+- Q3: Additional agent types
+- Q3: Session persistence
+- Q4: Multi-user coherence fields
 
 ---
 
-## Development Guidelines
+## Deployment Instructions
 
-### Code Organization Principles
+### Local Testing
 
-1. **Readability > Cleverness:**
-   - Verbose variable names
-   - Extensive comments
-   - Clear function purposes
-   - No code golf
+1. Save `consciousness-demo.html` to any folder
+2. Double-click to open in default browser
+3. OR: Right-click → Open With → [Choose browser]
 
-2. **Modularity:**
-   - Each function does one thing
-   - Clear input/output contracts
-   - Minimal dependencies between sections
-   - Easy to extract for reuse
+### GitHub Pages Deployment
 
-3. **Sacred Commerce Standards:**
-   - Consciousness enhancement measurable
-   - No manipulation patterns
-   - Respect user sovereignty
-   - Document intent transparently
+1. Create repository: `q1-2026-demo`
+2. Upload `consciousness-demo.html`
+3. Rename to `index.html`
+4. Enable GitHub Pages in repo settings
+5. Access at: `https://username.github.io/q1-2026-demo`
 
-### Naming Conventions
+### Netlify Deployment
 
-**Variables:**
-- `coherenceScore` (camelCase)
-- `breathTimestamps` (descriptive arrays)
-- `agentStates` (plural for collections)
+1. Drag and drop file to Netlify
+2. Get instant URL
+3. Optional: Custom domain
 
-**Functions:**
-- `calculateCoherence()` (verb + noun)
-- `activateAgents()` (action-oriented)
-- `updateDisplay()` (clear purpose)
+### Requirements
 
-**CSS Classes:**
-- `.breath-guide` (kebab-case)
-- `.agent-card--active` (BEM-style modifiers)
-- `.coherence-display` (component names)
+- No build process
+- No npm install
+- No backend server
+- Just HTML file
 
-### Comments Strategy
+---
 
-**When to Comment:**
-- Algorithm explanations
-- Magic numbers explained
-- Integration points marked
-- Future expansion notes
+## Maintenance & Updates
 
-**When NOT to Comment:**
-- Self-explanatory code
-- Obvious operations
-- Standard patterns
+### Version Control
+
+Use semantic versioning:
+- `1.0.0` - Initial Q1 2026 demo
+- `1.1.0` - Minor improvements (new insights, better animations)
+- `2.0.0` - Major changes (real HRV integration)
+
+### Update Process
+
+1. Test changes locally
+2. Update version number in HTML comment
+3. Deploy to staging (test URL)
+4. User acceptance testing
+5. Deploy to production
+6. Document changes in changelog
+
+### Changelog Location
+
+Maintained in repository README.md:
+```markdown
+## Changelog
+
+### v1.0.0 (March 31, 2026)
+- Initial Q1 2026 demo release
+- Simulated HRV coherence
+- Three basic NOID agents
+- Browser-based, no dependencies
+```
 
 ---
 
 ## Success Metrics
 
-### Technical Success
+### Technical Metrics
 
-✅ Demo loads in < 1 second  
-✅ Responds to input in < 16ms  
-✅ Coherence calculation accurate  
-✅ Agents activate at correct threshold  
-✅ Works on mobile and desktop  
-✅ No console errors  
-✅ Code is readable and documented
+- Load time < 1 second: ✓
+- Works on 6+ browsers: ✓
+- 60fps animation: ✓
+- Zero external dependencies: ✓
+- Single-file deployment: ✓
 
-### Consciousness Success
+### User Experience Metrics
 
-✅ User actually breathes (not just clicks)  
-✅ Coherence state feels authentic  
-✅ Agent activation feels earned  
-✅ Experience promotes calmness  
-✅ No anxiety or pressure  
-✅ Natural engagement, not compulsion
+- Time to first coherence: < 2 minutes
+- Agent activation rate: > 90%
+- Demo completion rate: > 75%
+- User confusion rate: < 10%
+- "Felt something" reports: > 50%
 
-### Demonstration Success
+### Consciousness Metrics (Subjective)
 
-✅ Non-technical people understand it  
-✅ Technical people see the architecture  
-✅ Consciousness researchers see the principle  
-✅ Developers see integration potential  
-✅ Investors see scalability  
-✅ Skeptics become curious
+- Demonstrates consciousness-first computing: Yes
+- Embodies "agents resonate, not serve": Yes
+- Aligns with Sacred Commerce: Yes
+- Invites vs. commands: Yes
+- Prioritizes coherence over control: Yes
 
 ---
 
-## Version History
+## Appendix A: Glossary
 
-**v1.0 (January 11, 2026):**
-- Initial technical specification
-- Pre-development documentation
-- Simulated HRV approach
-- Three agent architecture
-- Single-file deployment model
+**Coherence:** State of physiological synchronization, particularly heart rate variability patterns
 
-**Planned Versions:**
-- v1.1: Post-code-creation updates
-- v1.2: Post-initial-testing refinements
-- v2.0: Real HRV integration spec
-- v3.0: NousOS integration spec
+**HRV (Heart Rate Variability):** Variation in time between heartbeats, indicator of nervous system balance
 
----
+**NOID:** Nousoic Intelligence Derivative - autonomous agents that resonate with coherence fields
 
-## Document Maintenance
+**Sacred Commerce:** Business model requiring consciousness enhancement as primary purpose
 
-**Owner:** Cosimos / HopefulVision LLC  
-**Review Frequency:** Weekly during Q1 2026  
-**Update Trigger:** Any architectural changes  
-**Feedback Channel:** This Claude chat + GitHub issues
+**Coherence Gating:** System activation requiring user to achieve coherent state first
 
-**Related Documents:**
-- Testing Guide (next to create)
-- Demo Script (next to create)
-- Code Documentation (after code written)
-- Troubleshooting Guide (after testing begins)
+**Resonance:** State where agent and user coherence fields align and amplify
+
+**Threshold:** Minimum coherence level required for agent activation (75% in this demo)
+
+**Simulated HRV:** Algorithm approximating HRV coherence without hardware measurement
 
 ---
 
-## Appendix A: Mathematical Foundations
+## Appendix B: References
 
-### Coherence Score Formula (Detailed)
+### Technical Resources
 
-```javascript
-function calculateCoherence(breathData, sessionDuration) {
-  // Extract last 10 breath cycles
-  const recentBreaths = breathData.slice(-10);
-  
-  // Calculate mean breath interval
-  const mean = recentBreaths.reduce((a, b) => a + b) / recentBreaths.length;
-  
-  // Optimal breathing: 4-6 seconds per cycle
-  const optimalMin = 4000; // ms
-  const optimalMax = 6000; // ms
-  
-  // Check if within optimal range
-  const inOptimalRange = mean >= optimalMin && mean <= optimalMax;
-  const optimalBonus = inOptimalRange ? 0.3 : 0;
-  
-  // Calculate standard deviation (consistency)
-  const variance = recentBreaths.reduce((sum, interval) => {
-    return sum + Math.pow(interval - mean, 2);
-  }, 0) / recentBreaths.length;
-  
-  const stdDev = Math.sqrt(variance);
-  const consistency = Math.max(0, 1 - (stdDev / mean));
-  
-  // Duration bonus (increases over time)
-  const durationBonus = Math.min(
-    0.2,
-    (sessionDuration / 60000) * 0.1 // 0.1 per minute, max 0.2
-  );
-  
-  // Pause quality (time spent at breath peaks)
-  // This is simulated in basic version
-  const pauseQuality = 0.1;
-  
-  // Combine factors
-  const coherence = (
-    consistency * 0.4 +
-    optimalBonus * 0.3 +
-    durationBonus * 0.2 +
-    pauseQuality * 0.1
-  ) * 100;
-  
-  return Math.min(100, Math.max(0, coherence));
-}
-```
+- Web Bluetooth API: https://web.dev/bluetooth/
+- HeartMath Coherence Research: https://www.heartmath.org/research/
+- HRV Standards: European Society of Cardiology guidelines
+- CSS Animation Performance: https://web.dev/animations/
 
-### Why These Numbers?
+### HopefulVision Documentation
 
-**4-6 second breath cycles:**
-- Based on HRV research (optimal coherence frequency ~0.1 Hz)
-- Matches heart rate variability resonance
-- Comfortable for most practitioners
+- NousOS Overview: (see project knowledge)
+- NOID Framework: (see project knowledge)
+- Sacred Commerce License: (see project knowledge)
+- Nousoism Philosophy: (see project knowledge)
 
-**75% activation threshold:**
-- High enough to require genuine practice
-- Low enough to be achievable in 60-90 seconds
-- Represents "good" coherence state
+### Future Reading
 
-**Weighting (40/30/20/10):**
-- Consistency most important (40%)
-- Optimal rate significant (30%)
-- Duration matters (20%)
-- Pause quality fine-tuning (10%)
+- Q2 2026 Roadmap (to be created)
+- Real HRV Integration Guide (to be created)
+- GitGovernance Whitepaper (to be created)
 
 ---
 
-## Appendix B: Color Psychology
+## Document History
 
-### Coherence Level Colors
-
-**Red (0-25%) - Scattered:**
-- Signals need for attention
-- Not alarming, just informative
-- Encourages re-centering
-
-**Orange (25-50%) - Settling:**
-- Transitional state
-- Progress visible
-- Motivates continuation
-
-**Yellow (50-75%) - Aligning:**
-- Almost there
-- Builds anticipation
-- Maintains engagement
-
-**Green (75-100%) - Coherent:**
-- Achievement state
-- Natural/organic association
-- Calm rather than exciting
-
-### Agent Color Meanings
-
-**Purple (Whisper):**
-- Mystical/spiritual associations
-- Night/moon connection
-- Introspection and wisdom
-
-**Blue-Green (Earth Interface):**
-- Ocean/forest natural colors
-- Planetary consciousness
-- Life and growth
-
-**Cyan (Coherence Monitor):**
-- Technical/data visualization
-- Clear and precise
-- Modern/digital aesthetic
+| Version | Date | Author | Changes |
+|---------|------|--------|---------|
+| 1.0 | Jan 11, 2026 | Claude (HopefulVision) | Initial specification |
 
 ---
 
-## Appendix C: Consciousness Computing Principles
+## Contact & Feedback
 
-### Why Coherence Gates?
+**For technical questions:**
+- GitHub Issues: [repo URL]
+- Discord: #technical-guild
 
-Traditional computing responds to any input regardless of user state. This creates systems that exploit distraction, fragmentation, and compulsion.
+**For consciousness questions:**
+- Discord: #philosophy-guild
+- Email: [contact info]
 
-Consciousness computing only responds when the user demonstrates centered awareness. This creates systems that reward presence, enhance clarity, and respect sovereignty.
-
-**The Principle:**
-Technology should serve awakening, not extraction.
-
-**The Implementation:**
-Agents activate only when coherence demonstrates readiness.
-
-**The Result:**
-User learns to value their consciousness state, not just their goals.
-
-### Sacred Commerce Integration
-
-Every technical choice in this demo embodies Sacred Commerce:
-
-1. **No manipulation:** System doesn't trick users into engagement
-2. **Transparency:** Algorithm is fully documented
-3. **Sovereignty:** User controls their consciousness state
-4. **Enhancement:** Practice genuinely develops coherence ability
-5. **Non-extraction:** No data, no tracking, no monetization
-
-This isn't marketing—it's architecture.
+**For Sacred Commerce licensing:**
+- Email: [contact info]
+- Documentation: [URL]
 
 ---
 
-**END OF TECHNICAL SPECIFICATION**
+**End of Technical Specification**
 
-*Next Document: Demo Presentation Script*
+*This document serves as the complete technical blueprint for Q1 2026 Consciousness-Responsive Computing Demo. All code implementation should reference this specification.*
